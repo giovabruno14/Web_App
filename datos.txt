@@ -1,0 +1,12 @@
+Diseño Multimedial
+Diseño y programación web I
+2023
+Tercer cuatrimeste
+Comisión: A
+Turno: Presencial
+Integrantes: Giovanni Bruno - Juan Pablo Fatuzzo
+Docente: Omar Toyos
+Caracter de entrega: TP
+
+URL DE LA WEB APP:
+https://giovabruno14.github.io/tienda/
