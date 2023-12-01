@@ -9,4 +9,4 @@ Docente: Omar Toyos
 Caracter de entrega: TP
 
 URL DE LA WEB APP:
-https://giovabruno14.github.io/tienda/
+https://giovabruno14.github.io/Web_App/
