@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     productInput.classList.add('form-control');
     productInput.addEventListener('input', function () {
       var value = this.value.trim();
-      if (productosIngresados[nombreLista] && productosIngresados[nombreLista].includes(value)) {
+      if (productosIngresados[nombreLista]&& productosIngresados[nombreLista].includes(value)) {
         this.classList.add('error');
       } else {
         this.classList.remove('error');
