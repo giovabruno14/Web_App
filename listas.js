@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     productInput.classList.add('form-control');
     productInput.addEventListener('input', function () {
       var value = this.value.trim();
-      if (productosIngresados[nombreLista]&& productosIngresados[nombreLista].includes(value)) {
+      if (productosIngresados[nombreLista] && productosIngresados[nombreLista].includes(value)) {
         this.classList.add('error');
       } else {
         this.classList.remove('error');
@@ -132,6 +132,10 @@ document.addEventListener('DOMContentLoaded', function () {
       nombresListas.push(nombreLista);
       var listasContainer = document.getElementById('listasContainer');
       listasContainer.style.display = 'block';
+
+      
+      var productInput = document.getElementById('nombreLista');
+      productInput.classList.toggle('hidden');
 
       var listContainer = document.createElement('div');
       listContainer.classList.add('list-container');
@@ -237,7 +241,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
- 
   nombresListas.forEach(function (nombreLista) {
     renderList(nombreLista, productosIngresados[nombreLista]);
   });
