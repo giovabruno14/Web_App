@@ -6,199 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SuperLista</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    
-
-    <style>
-         body {
-      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #ffbdae;
-    }
-
-    label {
-      color: #fff;
-    }
-
-    Button {
-      margin-top: 15px;
-    }
-
-    #datosPersonales {
-      background-color: #ffbdae;
-      border: 1px solid #c45fa2;
-      color: #fff; 
-      margin-left: 10px;
-      margin-top: 10px;
-    }
-
-    #datosPersonalesLink {
-      color: #e9242a;
-    }
-
-    .contenedor {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-      
-        .contenedorBienvenida {
-          background-color: #ff7359;
-          border: 1px solid #f24427;
-          border-radius: 10px;
-      
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: 400px;
-          text-align: center;
-        }
-      
-        .contenedorBienvenida h1 {
-          font-size: 48px;
-          margin-bottom: 20px;
-        }
-      
-        .contenedorBienvenida img {
-          margin-bottom: 30px;
-        }
-      
-        .contenedorBienvenida button {
-          font-size: 18px;
-          padding: 10px 30px;
-          margin-top: 20px;
-          cursor: pointer;
-          background-color: #e9242a;
-          color: #fff;
-          border-radius: 5px;
-          border: none;
-        }
-      
-        .list-form {
-          margin-bottom: 20px;
-        }
-      
-        .list-form label {
-          font-weight: bold;
-          font-size: 24px;
-        }
-      
-        .list-form input[type="text"] {
-          width: 100%;
-          padding: 5px;
-          margin-bottom: 10px;
-          border-radius: 5px;
-          font-size: 18px;
-        }
-      
-        #listasContainer {
-          background-color: #ffbdae;
-          border: 2px solid #f24427;
-          border-radius: 10px;
-          padding: 20px;
-          margin-bottom: 20px;
-          display: none;
-        }
-      
-        #listasContainer h1 {
-          font-size: 36px;
-          margin: 0;
-          margin-bottom: 20px;
-        }
-      
-        .product-input {
-          margin-bottom: 10px;
-        }
-      
-        .product-item {
-          display: flex;
-          align-items: center;
-          margin-bottom: 5px;
-        }
-      
-        .product-item label {
-          margin-right: 10px;
-        }
-      
-        .product-item.completed span {
-          text-decoration: line-through;
-        }
-      
-        .delete-list-btn {
-          background-color: #fff;
-          color: #e9242a;
-          border: none;
-          padding: 5px 10px;
-          margin-left: 10px;
-          cursor: pointer;
-          border-radius: 20px;
-        }
-      
-        .delete-list-btn:hover {
-          border: 1px solid #e9242a;
-        }
-      
-        .error {
-          border: 1px solid red;
-        }
-      
-        #crearListaBtn {
-          background-color: #e9242a;
-        }
-      
-    
-        span, #subtituloInicio, #tituloInicio, #nombreDeLista, #seguinos {
-          color: #e9242a;
-        }
-      
-        #subtituloInicio {
-          padding: 0px;
-        }
-      
-        #tituloInicio {
-          margin-top: 30px;
-        }
-      
-        #nombreDeLista {
-          color: #e9242a;
-        }
-      
-        #seguinos {
-          text-align: center;
-          color: #e9242a;
-        }
-      
-        #redes {
-          justify-content: center;
-          display: flex;
-          align-items: center;
-        }
-      
-        #redes h2 {
-          text-align: center;
-        }
-      
-        #redes img {
-          margin: 10px;
-          width: 50px;
-        }
-      
-        .nav-item a:hover {
-          background-color: #e9242a;
-        
-        }
-      
-        nav {
-          height: auto;
-          width: auto;
-          background-color: #ff6551;
-        }
-      </style>
-      
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    
     <nav>
       <ul class="nav justify-content-center">
         <li class="nav-item">
@@ -235,151 +45,159 @@
         var nombresListas = [];
         var productosIngresados = {};
 
-        document.getElementById("startButton").addEventListener("click", function () {
-          document.querySelector(".contenedorBienvenida").style.display = "none";
-          document.querySelector(".list-form").style.display = "block";
-        });
+        document
+          .getElementById("startButton")
+          .addEventListener("click", function () {
+            document.querySelector(".contenedorBienvenida").style.display =
+              "none";
+            document.querySelector(".list-form").style.display = "block";
+          });
 
-        document.getElementById("nombreLista").addEventListener("keydown", function (event) {
-          if (event.keyCode === 13) {
-            event.preventDefault();
-            document.getElementById("crearListaBtn").click();
-          }
-        });
+        document
+          .getElementById("nombreLista")
+          .addEventListener("keydown", function (event) {
+            if (event.keyCode === 13) {
+              event.preventDefault();
+              document.getElementById("crearListaBtn").click();
+            }
+          });
 
-        document.getElementById("crearListaBtn").addEventListener("click", function () {
-          var nombreLista = document.getElementById("nombreLista").value.trim();
+        document
+          .getElementById("crearListaBtn")
+          .addEventListener("click", function () {
+            var nombreLista = document
+              .getElementById("nombreLista")
+              .value.trim();
 
-          if (nombreLista !== "") {
-            nombresListas.push(nombreLista);
-            document.getElementById("listasContainer").style.display = "block";
+            if (nombreLista !== "") {
+              nombresListas.push(nombreLista);
+              document.getElementById("listasContainer").style.display =
+                "block";
 
-            var listasContainer = document.getElementById("listasContainer");
+              var listasContainer = document.getElementById("listasContainer");
 
-            var listContainer = document.createElement("div");
-            listContainer.classList.add("list-container");
-            listasContainer.appendChild(listContainer);
+              var listContainer = document.createElement("div");
+              listContainer.classList.add("list-container");
+              listasContainer.appendChild(listContainer);
 
-            var h1 = document.createElement("h1");
-            h1.textContent = nombreLista;
-            listContainer.appendChild(h1);
+              var h1 = document.createElement("h1");
+              h1.textContent = nombreLista;
+              listContainer.appendChild(h1);
 
-            var productosLista = document.createElement("div");
-            productosLista.id = "productosLista_" + listaIndex;
-            listContainer.appendChild(productosLista);
+              var productosLista = document.createElement("div");
+              productosLista.id = "productosLista_" + listaIndex;
+              listContainer.appendChild(productosLista);
 
-            var productInput = document.createElement("div");
-            productInput.classList.add("product-input");
-            productosLista.appendChild(productInput);
+              var productInput = document.createElement("div");
+              productInput.classList.add("product-input");
+              productosLista.appendChild(productInput);
 
-            var label = document.createElement("label");
-            label.textContent = "Ingrese un producto:";
-            productInput.appendChild(label);
+              var label = document.createElement("label");
+              label.textContent = "Ingrese un producto:";
+              productInput.appendChild(label);
 
-            var productoInput = document.createElement("input");
-            productoInput.type = "text";
-            productoInput.classList.add("form-control");
-            productoInput.addEventListener("input", function () {
-              var value = this.value.trim();
-              if (
-                productosIngresados[nombreLista] &&
-                productosIngresados[nombreLista].includes(value)
-              ) {
-                this.classList.add("error");
-              } else {
-                this.classList.remove("error");
-              }
-            });
-            productInput.appendChild(productoInput);
-
-            var addButton = document.createElement("button");
-            addButton.textContent = "Agregar";
-            addButton.classList.add("btn", "btn-primary", "rounded-pill");
-            addButton.addEventListener("click", function () {
-              var producto = productoInput.value.trim();
-
-              if (producto !== "" && !isNaN(producto)) {
-                alert("Debe ingresar palabras en lugar de números.");
-                return;
-              }
-
-              if (producto !== "") {
+              var productoInput = document.createElement("input");
+              productoInput.type = "text";
+              productoInput.classList.add("form-control");
+              productoInput.addEventListener("input", function () {
+                var value = this.value.trim();
                 if (
                   productosIngresados[nombreLista] &&
-                  productosIngresados[nombreLista].includes(producto)
+                  productosIngresados[nombreLista].includes(value)
                 ) {
-                  alert("Este producto ya ha sido ingresado.");
+                  this.classList.add("error");
+                } else {
+                  this.classList.remove("error");
+                }
+              });
+              productInput.appendChild(productoInput);
+
+              var addButton = document.createElement("button");
+              addButton.textContent = "Agregar";
+              addButton.classList.add("btn", "btn-primary", "rounded-pill");
+              addButton.addEventListener("click", function () {
+                var producto = productoInput.value.trim();
+
+                if (producto !== "" && !isNaN(producto)) {
+                  alert("Debe ingresar palabras en lugar de números.");
                   return;
                 }
 
-                var productItem = document.createElement("div");
-                productItem.classList.add("product-item");
-                productosLista.appendChild(productItem);
+                if (producto !== "") {
+                  if (
+                    productosIngresados[nombreLista] &&
+                    productosIngresados[nombreLista].includes(producto)
+                  ) {
+                    alert("Este producto ya ha sido ingresado.");
+                    return;
+                  }
 
-                var label = document.createElement("label");
-                label.innerHTML = '<input type="checkbox">';
-                productItem.appendChild(label);
+                  var productItem = document.createElement("div");
+                  productItem.classList.add("product-item");
+                  productosLista.appendChild(productItem);
 
-                var span = document.createElement("span");
-                span.textContent = producto;
-                productItem.appendChild(span);
+                  var label = document.createElement("label");
+                  label.innerHTML = '<input type="checkbox">';
+                  productItem.appendChild(label);
 
-                productoInput.value = "";
+                  var span = document.createElement("span");
+                  span.textContent = producto;
+                  productItem.appendChild(span);
 
-                if (!productosIngresados[nombreLista]) {
-                  productosIngresados[nombreLista] = [];
+                  productoInput.value = "";
+
+                  if (!productosIngresados[nombreLista]) {
+                    productosIngresados[nombreLista] = [];
+                  }
+                  productosIngresados[nombreLista].push(producto);
+
+                  localStorage.setItem(
+                    "listasGuardadas",
+                    JSON.stringify(productosIngresados)
+                  );
                 }
-                productosIngresados[nombreLista].push(producto);
+              });
+              productInput.appendChild(addButton);
+
+              var deleteButton = document.createElement("button");
+              deleteButton.textContent = "Borrar Lista";
+              deleteButton.classList.add("delete-list-btn");
+              deleteButton.addEventListener("click", function () {
+                delete productosIngresados[nombreLista];
+                listContainer.remove();
+                if (document.querySelectorAll(".list-container").length === 0) {
+                  document.getElementById("listasContainer").style.display =
+                    "none";
+                }
 
                 localStorage.setItem(
                   "listasGuardadas",
                   JSON.stringify(productosIngresados)
                 );
-              }
-            });
-            productInput.appendChild(addButton);
+              });
+              listContainer.appendChild(deleteButton);
 
-            var deleteButton = document.createElement("button");
-            deleteButton.textContent = "Borrar Lista";
-            deleteButton.classList.add("delete-list-btn");
-            deleteButton.addEventListener("click", function () {
-              delete productosIngresados[nombreLista];
-              listContainer.remove();
-              if (document.querySelectorAll(".list-container").length === 0) {
-                document.getElementById("listasContainer").style.display = "none";
-              }
+              listaIndex++;
+            }
 
-              localStorage.setItem(
-                "listasGuardadas",
-                JSON.stringify(productosIngresados)
-              );
-            });
-            listContainer.appendChild(deleteButton);
+            var storedLists =
+              JSON.parse(localStorage.getItem("listasGuardadas")) || {};
+            storedLists[nombreLista] = productosIngresados[nombreLista];
+            localStorage.setItem(
+              "listasGuardadas",
+              JSON.stringify(storedLists)
+            );
+          });
 
-            listaIndex++;
-          }
-
-          var storedLists =
-            JSON.parse(localStorage.getItem("listasGuardadas")) || {};
-          storedLists[nombreLista] = productosIngresados[nombreLista];
-          localStorage.setItem("listasGuardadas", JSON.stringify(storedLists));
-        });
-
-        document.addEventListener(
-          "keydown",
-          function (event) {
-            var target = event.target;
-            if (
-              target &&
-              target.matches('.product-input input[type="text"]')
-            ) {
-              if (event.keyCode === 13) {
-                event.preventDefault();
-                target.nextElementSibling.click();
-              }
+        document.addEventListener("keydown", function (event) {
+          var target = event.target;
+          if (target && target.matches('.product-input input[type="text"]')) {
+            if (event.keyCode === 13) {
+              event.preventDefault();
+              target.nextElementSibling.click();
             }
           }
-        );
+        });
 
         productosIngresados =
           JSON.parse(localStorage.getItem("listasGuardadas")) || {};

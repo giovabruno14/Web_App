@@ -1,0 +1,412 @@
+/* index */
+         body {
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffbdae;
+    }
+
+    label {
+      color: #fff;
+    }
+
+    Button {
+      margin-top: 15px;
+    }
+
+    #datosPersonales {
+      background-color: #ffbdae;
+      border: 1px solid #c45fa2;
+      color: #fff; 
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+
+    #datosPersonalesLink {
+      color: #e9242a;
+    }
+
+    .contenedor {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+      
+        .contenedorBienvenida {
+          background-color: #ff7359;
+          border: 1px solid #f24427;
+          border-radius: 10px;
+      
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 400px;
+          text-align: center;
+        }
+      
+        .contenedorBienvenida h1 {
+          font-size: 48px;
+          margin-bottom: 20px;
+        }
+      
+        .contenedorBienvenida img {
+          margin-bottom: 30px;
+        }
+      
+        .contenedorBienvenida button {
+          font-size: 18px;
+          padding: 10px 30px;
+          margin-top: 20px;
+          cursor: pointer;
+          background-color: #e9242a;
+          color: #fff;
+          border-radius: 5px;
+          border: none;
+        }
+      
+        .list-form {
+          margin-bottom: 20px;
+        }
+      
+        .list-form label {
+          font-weight: bold;
+          font-size: 24px;
+        }
+      
+        .list-form input[type="text"] {
+          width: 100%;
+          padding: 5px;
+          margin-bottom: 10px;
+          border-radius: 5px;
+          font-size: 18px;
+        }
+      
+        #listasContainer {
+          background-color: #ffbdae;
+          border: 2px solid #f24427;
+          border-radius: 10px;
+          padding: 20px;
+          margin-bottom: 20px;
+          display: none;
+        }
+      
+        #listasContainer h1 {
+          font-size: 36px;
+          margin: 0;
+          margin-bottom: 20px;
+        }
+      
+        .product-input {
+          margin-bottom: 10px;
+        }
+      
+        .product-item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 5px;
+        }
+      
+        .product-item label {
+          margin-right: 10px;
+        }
+      
+        .product-item.completed span {
+          text-decoration: line-through;
+        }
+      
+        .delete-list-btn {
+          background-color: #fff;
+          color: #e9242a;
+          border: none;
+          padding: 5px 10px;
+          margin-left: 10px;
+          cursor: pointer;
+          border-radius: 20px;
+        }
+      
+        .delete-list-btn:hover {
+          border: 1px solid #e9242a;
+        }
+      
+        .error {
+          border: 1px solid red;
+        }
+      
+        #crearListaBtn {
+          background-color: #e9242a;
+        }
+      
+    
+        span, #subtituloInicio, #tituloInicio, #nombreDeLista, #seguinos {
+          color: #e9242a;
+        }
+      
+        #subtituloInicio {
+          padding: 0px;
+        }
+      
+        #tituloInicio {
+          margin-top: 30px;
+        }
+      
+        #nombreDeLista {
+          color: #e9242a;
+        }
+      
+        #seguinos {
+          text-align: center;
+          color: #e9242a;
+        }
+      
+        #redes {
+          justify-content: center;
+          display: flex;
+          align-items: center;
+        }
+      
+        #redes h2 {
+          text-align: center;
+        }
+      
+        #redes img {
+          margin: 10px;
+          width: 50px;
+        }
+      
+        .nav-item a:hover {
+          background-color: #e9242a;
+        
+        }
+      
+        nav {
+          height: auto;
+          width: auto;
+          background-color: #ff6551;
+        }
+       /*  listas */
+      body {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ffbdae;
+      }
+      label {
+        color: #fff;
+      }
+
+      Button {
+        margin-top: 15px;
+      }
+
+      #datosPersonales {
+        background-color: #ffbdae;
+        border: 1px solid #c45fa2;
+        color: #9f2b85;
+        margin-left: 10px;
+        margin-top: 10px;
+      }
+
+      #datosPersonalesLink {
+        color: #e9242a;
+      }
+
+      .contenedor {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .contenedorBienvenida {
+        background-color: #ff7359;
+        border: 1px solid #f24427;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 400px;
+        text-align: center;
+      }
+
+      .contenedorBienvenida h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+
+      .contenedorBienvenida img {
+        margin-bottom: 30px;
+      }
+
+      .contenedorBienvenida button {
+        font-size: 18px;
+        padding: 10px 30px;
+        margin-top: 20px;
+        cursor: pointer;
+        background-color: #e9242a;
+        color: #fff;
+        border-radius: 5px;
+        border: none;
+      }
+
+      .list-form {
+        margin-bottom: 20px;
+      }
+
+      .list-form label {
+        font-weight: bold;
+        font-size: 24px;
+      }
+
+      .list-form input[type="text"] {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        font-size: 18px;
+      }
+
+      #listasContainer {
+        background-color: #ff7359;
+        border: 2px solid #f24427;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      #listasContainer h1 {
+        font-size: 36px;
+        margin: 0;
+        margin-bottom: 20px;
+      }
+
+      .product-input {
+        margin-bottom: 10px;
+      }
+
+      .product-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+      }
+
+      .product-item label {
+        margin-right: 10px;
+      }
+
+      #agregarProductoBtn {
+        background-color: green;
+      }
+
+      .delete-list-btn {
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        margin-left: 10px;
+        cursor: pointer;
+        border-radius: 20px;
+      }
+
+      .delete-list-btn:hover {
+        border: 1px solid #dc3545;
+      }
+
+      .error {
+        border: 1px solid red;
+      }
+
+      #crearListaBtn {
+        background-color: green;
+      }
+      h1 {
+        color: #fff;
+      }
+
+      span {
+        color: #fff;
+      }
+
+      #subtituloInicio {
+        color: #e9242a;
+        padding: 0px;
+      }
+
+      #tituloInicio {
+        color: #e9242a;
+        margin-top: 30px;
+      }
+
+      #nombreDeLista {
+        color: #e9242a;
+      }
+
+      #seguinos {
+        text-align: center;
+        color: #e9242a;
+      }
+
+      #redes {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+      }
+
+      #redes h2 {
+        text-align: center;
+      }
+
+      #redes img {
+        margin: 10px;
+        width: 50px;
+      }
+
+      .nav-item a:hover {
+        background-color: #e9242a;
+        color: #fff;
+      }
+
+      nav {
+        height: auto;
+        width: auto;
+        color: #fff;
+        background-color: #ff6551;
+      }
+
+      #seguinos {
+        text-align: center;
+        color: #e9242a;
+      }
+
+      #redes {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+      }
+
+      .delete-list-btn {
+        display: inline-block;
+        margin-bottom: 10px;
+        margin-left: 10px;
+      }
+      .add-product-btn {
+        display: inline-block;
+        margin-bottom: 10px;
+        margin-left: 10px;
+      }
+
+      .product-item {
+        padding-top: 14px;
+        position: relative;
+        font-size: 20px;
+      }
+
+      .product-item .delete-product-btn {
+        position: absolute;
+        top: 1;
+        right: 10px;
+      }
+     /* datos personales */
+  
