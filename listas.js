@@ -1,11 +1,11 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   var listaIndex = 1;
-  var nombresListas = JSON.parse(localStorage.getItem('nombresListas')) || [];
-  var productosIngresados = JSON.parse(localStorage.getItem('productosIngresados')) || {};
+  var nombresListas = [];
+  var productosIngresados = {};
 
   function guardarEnLocalStorage() {
-    localStorage.setItem('nombresListas', JSON.stringify(nombresListas));
-    localStorage.setItem('productosIngresados', JSON.stringify(productosIngresados));
+    localStorage.setItem('nombresListas', nombresListas.join(","));
+    localStorage.setItem('productosIngresados', Object.keys(productosIngresados).join(","));
   }
 
   function agregarProductoALista(nombreLista, producto) {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var productInput = document.createElement('input');
     productInput.type = 'text';
-    productInput.classList.add('form-control');
+    productInput.classList.add('form-control', 'hidden');
     productInput.addEventListener('input', function () {
       var value = this.value.trim();
       if (productosIngresados[nombreLista] && productosIngresados[nombreLista].includes(value)) {
@@ -116,6 +116,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
     listContainer.appendChild(deleteListBtn);
+
+    productInput.classList.toggle('hidden'); // toggle
+    listaIndex++;
   }
 
   document.getElementById('nombreLista').addEventListener('keydown', function (event) {
@@ -133,10 +136,6 @@ document.addEventListener('DOMContentLoaded', function () {
       var listasContainer = document.getElementById('listasContainer');
       listasContainer.style.display = 'block';
 
-      
-      var productInput = document.getElementById('nombreLista');
-      productInput.classList.toggle('hidden');
-
       var listContainer = document.createElement('div');
       listContainer.classList.add('list-container');
       listasContainer.appendChild(listContainer);
@@ -151,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var productInput = document.createElement('input');
       productInput.type = 'text';
-      productInput.classList.add('form-control');
+      productInput.classList.add('form-control', 'hidden');
       productInput.addEventListener('input', function () {
         var value = this.value.trim();
         if (productosIngresados[nombreLista] && productosIngresados[nombreLista].includes(value)) {
@@ -221,16 +220,21 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       listContainer.appendChild(deleteListBtn);
 
+      productInput.classList.toggle('hidden'); 
       listaIndex++;
     }
 
-    var storedLists = JSON.parse(localStorage.getItem('productosIngresados')) || {};
-    storedLists[nombreLista] = productosIngresados[nombreLista] || [];
-    localStorage.setItem('productosIngresados', JSON.stringify(storedLists));
+    var storedLists = localStorage.getItem('productosIngresados') ?
+      localStorage.getItem('productosIngresados').split(",") :
+      [];
+    storedLists.push(nombreLista);
+    localStorage.setItem('productosIngresados', storedLists.join(","));
 
-    var storedNames = JSON.parse(localStorage.getItem('nombresListas')) || [];
+    var storedNames = localStorage.getItem('nombresListas') ?
+      localStorage.getItem('nombresListas').split(",") :
+      [];
     storedNames.push(nombreLista);
-    localStorage.setItem('nombresListas', JSON.stringify(storedNames));
+    localStorage.setItem('nombresListas', storedNames.join(","));
   });
 
   document.addEventListener('keydown', function (event) {
@@ -241,7 +245,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  nombresListas.forEach(function (nombreLista) {
+  var storedNames = localStorage.getItem('nombresListas') ?
+    localStorage.getItem('nombresListas').split(",") :
+    [];
+  storedNames.forEach(function (nombreLista) {
     renderList(nombreLista, productosIngresados[nombreLista]);
   });
 });
+
