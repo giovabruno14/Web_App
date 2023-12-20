@@ -3,6 +3,66 @@ document.addEventListener("DOMContentLoaded", function () {
   var nombresListas = [];
   var productosIngresados = {};
 
+  function mostrarListasAlmacenadas() {
+    var storedLists = localStorage.getItem("listasGuardadas") ?
+      localStorage.getItem("listasGuardadas").split(",") :
+      [];
+
+    storedLists.forEach(function (nombreLista) {
+      nombresListas.push(nombreLista);
+      document.getElementById("listasContainer").style.display = "block";
+
+      var listasContainer = document.getElementById("listasContainer");
+
+      var listContainer = document.createElement("div");
+      listContainer.classList.add("list-container");
+      listasContainer.appendChild(listContainer);
+
+      var h1 = document.createElement("h1");
+      h1.textContent = nombreLista;
+      listContainer.appendChild(h1);
+
+      var productosLista = document.createElement("div");
+      productosLista.id = "productosLista_" + listaIndex;
+      listContainer.appendChild(productosLista);
+
+      if (productosIngresados[nombreLista]) {
+        productosIngresados[nombreLista].forEach(function (producto) {
+          var productItem = document.createElement("div");
+          productItem.classList.add("product-item");
+          productosLista.appendChild(productItem);
+
+          var label = document.createElement("label");
+          label.innerHTML = '<input type="checkbox">';
+          productItem.appendChild(label);
+
+          var span = document.createElement("span");
+          span.textContent = producto;
+          productItem.appendChild(span);
+        });
+      }
+
+      var deleteButton = document.createElement("button");
+      deleteButton.textContent = "Borrar Lista";
+      deleteButton.classList.add("delete-list-btn");
+      deleteButton.addEventListener("click", function () {
+        delete productosIngresados[nombreLista];
+        listContainer.remove();
+        if (document.querySelectorAll(".list-container").length === 0) {
+          document.getElementById("listasContainer").style.display = "none";
+        }
+
+        localStorage.setItem(
+          "listasGuardadas",
+          Object.keys(productosIngresados).join(",")
+        );
+      });
+      listContainer.appendChild(deleteButton);
+
+      listaIndex++;
+    });
+  }
+
   document.getElementById("startButton").addEventListener("click", function () {
     document.querySelector(".contenedorBienvenida").style.display = "none";
     document.querySelector(".list-form").style.display = "block";
@@ -127,12 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
       listaIndex++;
     }
 
-    var storedLists =
-      localStorage.getItem("listasGuardadas") ?
-      localStorage.getItem("listasGuardadas").split(",") :
-      [];
-    storedLists.push(nombreLista);
-    localStorage.setItem("listasGuardadas", storedLists.join(","));
+    mostrarListasAlmacenadas();
   });
 
   document.addEventListener("keydown", function (event) {
@@ -145,49 +200,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  var storedLists = localStorage.getItem("listasGuardadas") ?
-    localStorage.getItem("listasGuardadas").split(",") :
-    [];
-  storedLists.forEach(function (nombreLista) {
-    nombresListas.push(nombreLista);
-    document.getElementById("listasContainer").style.display = "block";
-
-    var listasContainer = document.getElementById("listasContainer");
-
-    var listContainer = document.createElement("div");
-    listContainer.classList.add("list-container");
-    listasContainer.appendChild(listContainer);
-
-    var h1 = document.createElement("h1");
-    h1.textContent = nombreLista;
-    listContainer.appendChild(h1);
-
-    var productosLista = document.createElement("div");
-    productosLista.id = "productosLista_" + listaIndex;
-    listContainer.appendChild(productosLista);
-
-    if (productosIngresados[nombreLista]) {
-      productosIngresados[nombreLista].forEach(function (producto) {
-        var productItem = document.createElement("div");
-        productItem.classList.add("product-item");
-        productosLista.appendChild(productItem);
-
-        var label = document.createElement("label");
-        label.innerHTML = '<input type="checkbox">';
-        productItem.appendChild(label);
-
-        var span = document.createElement("span");
-        span.textContent = producto;
-        productItem.appendChild(span);
-      });
-    }
-
-    var deleteButton = document.createElement("button");
-    deleteButton.textContent = "Borrar Lista";
-    deleteButton.classList.add("delete-list-btn");
-    deleteButton.addEventListener("click", function () {});
-    listContainer.appendChild(deleteButton);
-
-    listaIndex++;
-  });
+  
+  mostrarListasAlmacenadas();
 });
